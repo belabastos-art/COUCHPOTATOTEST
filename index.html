@@ -1,168 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Couch Potato Facts</title>
-<style>
-  :root{ --yellow:#ffde00; --ink:#111; --bg:#fff; }
-
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  }
-
-  /* Top strip */
-  .announce{
-    background:var(--yellow);
-    padding:.6rem 1rem;
-    text-align:center;
-    font-size:.95rem;
-    font-weight:600;
-  }
-
-  /* Two-column layout */
-  .wrap{
-    min-height:calc(100% - 44px);
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(16px, 4vw, 48px);
-    align-items:center;
-    padding: clamp(16px, 6vw, 80px);
-    position:relative;
-    overflow:hidden;
-  }
-
-  /* Left big title */
-  .title{
-    font-size: clamp(2.2rem, 7vw, 5rem);
-    line-height: .95;
-    font-weight: 900;
-    letter-spacing: .02em;
-  }
-  .title em{
-    color:var(--yellow);
-    font-style:normal;
-  }
-
-  /* Spiral background on right side */
-  .spiral-bg{
-    position:absolute;
-    inset:0;
-    background: repeating-conic-gradient(
-      from 0deg,
-      var(--yellow) 0 20deg,
-      var(--white) 20deg 40deg
-    );
-    z-index:0;
-    animation: spin 60s linear infinite;
-  }
-  @keyframes spin{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
-  }
-
-  /* Right fact card */
-  .card{
-    position:relative;
-    z-index:1;
-    justify-self:end;
-    width:min(90%, 520px);
-    border:3px solid var(--ink);
-    border-radius:12px;
-    padding: clamp(18px, 3vw, 32px);
-    background:#fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  }
-  .card h2{
-    margin:0 0 .75rem;
-    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-    text-align:center;
-  }
-  .card p{
-    margin:0;
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
-    line-height:1.4;
-    text-align:center;
-  }
-
-  /* Bouncing heart potato */
-  .spud{
-    position: fixed;
-    left: 20px; top: 20px;
-    width: clamp(100px, 14vw, 180px);
-    height: auto;
-    z-index: 50;
-    pointer-events: none;
-    filter: drop-shadow(0 12px 24px rgba(0,0,0,.25));
-    will-change: transform;
-  }
-
-  /* Mobile: stack columns */
-  @media (max-width: 860px){
-    .wrap{ grid-template-columns: 1fr; }
-    .card{ justify-self: start; width: 100%; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>Couch Potato Facts</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="announce">
-    feeling like a couch potato? learn a potato fact, a recipe or a quote to make you motivated
-  </div>
-
-  <main class="wrap">
-    <h1 class="title">Couch<br><em>Potato</em><br>Facts</h1>
-
-    <!-- spiral behind fact card -->
-    <div class="spiral-bg"></div>
-
-    <section class="card" aria-live="polite">
-      <h2>Today’s Spud Fact</h2>
-      <p>There are around <strong>5,000 varieties</strong> of potatoes in the world.</p>
+    <!-- header bar -->
+    <section class="announce_bar">
+        <p>feeling like a couch potato? learn a potato fact, a recipe or a quote to make you motivated</p>
     </section>
-  </main>
 
-  <!-- Bouncing heart potato image -->
-  <img class="spud" src="heart.png" alt="Heart-shaped potato" id="spud" />
+    <!-- main layout -->
+    <main class="page_wrap">
+        <!-- left side title -->
+        <section class="left_title">
+            <h1>Couch<br><span class="yellow">Potato</span><br>Facts</h1>
+        </section>
 
-<script>
-/* Simple edge-bounce animation */
-(function(){
-  const img = document.getElementById('spud');
-  if(!img) return;
+        <!-- right side fact box -->
+        <section class="fact_box">
+            <h2>Facts</h2>
+            <p>There are around <strong>5,000 varieties</strong> of potatoes in the world.</p>
+        </section>
+    </main>
 
-  let x = 20, y = 20;
-  let vx = 2.2, vy = 1.8;
-  let angle = 0, spin = 0.15;
-
-  function step(){
-    const w = img.offsetWidth;
-    const h = img.offsetHeight;
-    const maxX = window.innerWidth - w;
-    const maxY = window.innerHeight - h;
-
-    x += vx; y += vy; angle = (angle + spin) % 360;
-
-    if (x <= 0){ x = 0; vx = Math.abs(vx); }
-    if (x >= maxX){ x = maxX; vx = -Math.abs(vx); }
-    if (y <= 0){ y = 0; vy = Math.abs(vy); }
-    if (y >= maxY){ y = maxY; vy = -Math.abs(vy); }
-
-    img.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
-    requestAnimationFrame(step);
-  }
-
-  window.addEventListener('resize', () => {
-    const w = img.offsetWidth, h = img.offsetHeight;
-    x = Math.min(x, window.innerWidth - w);
-    y = Math.min(y, window.innerHeight - h);
-  });
-
-  requestAnimationFrame(step);
-})();
-</script>
 </body>
 </html>
