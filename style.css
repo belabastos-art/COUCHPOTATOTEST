@@ -1,0 +1,97 @@
+/* Basic beginner CSS for Couch Potato Facts */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+
+    /* use fundo.png as a repeating background */
+    background-image: url('fundo.png');
+    background-repeat: repeat;
+    background-size: 250px; /* adjust size of hearts */
+    animation: spinHearts 20s linear infinite;
+}
+
+/* yellow highlight text */
+.yellow {
+    color: #ffde00;
+}
+
+/* top announcement bar */
+.announce_bar {
+    background-color: #ffde00;
+    text-align: center;
+    padding: 10px;
+}
+.announce_bar p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* main layout: two columns */
+.page_wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    min-height: calc(100vh - 44px);
+    align-items: center;
+    padding: 40px;
+}
+
+/* left title */
+.left_title h1 {
+    margin: 0;
+    font-size: 56px;
+    line-height: 1;
+    text-align: left;
+}
+
+/* fact box on right */
+.fact_box {
+    justify-self: end;
+    width: 80%;
+    max-width: 520px;
+
+    border: 2px solid #000000;
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.fact_box h2 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+}
+.fact_box p {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* spin animation for background hearts */
+@keyframes spinHearts {
+    0% { background-position: 0 0; transform: rotate(0deg); }
+    100% { background-position: 0 0; transform: rotate(360deg); }
+}
+
+/* responsive mobile adjustments */
+@media (max-width: 800px) {
+    .page_wrap {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+    }
+    .left_title h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+    .fact_box {
+        justify-self: center;
+        width: 100%;
+        max-width: 520px;
+    }
+}
