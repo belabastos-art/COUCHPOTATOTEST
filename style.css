@@ -17,7 +17,7 @@ body {
   position: fixed;
   inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
   z-index: -1;              /* behind everything */
-  background-image: url('fundo.png');  /* your hearts tile */
+  background-image: url('heart.png');  /* your hearts tile */
   background-repeat: repeat;
   background-size: 250px;   /* change to resize hearts */
   animation: heartsDrift 30s linear infinite;
