@@ -19,7 +19,7 @@ body {
 }
 
 .heart_img {
-  width: 60px;      
+  width: 90px;      
   height: auto;
   display: block;
   margin: 10px 0;
@@ -56,7 +56,6 @@ body {
   background: #fff;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 .fact_box h2 {
   margin: 0 0 10px;
