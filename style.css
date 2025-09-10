@@ -1,5 +1,3 @@
-/* Basic beginner CSS for Couch Potato Facts */
-
 body {
   margin: 0;
   padding: 0;
@@ -7,10 +5,8 @@ body {
   background-color: #ffffff;
   color: #000000;
 }
+{ color: #ffde00; }
 
-.yellow { color: #ffde00; }
-
-/* header bar */
 .announce_bar {
   background-color: #ffde00;
   text-align: center;
@@ -22,24 +18,21 @@ body {
   font-weight: bold;
 }
 
-/* heart image below header */
 .heart_img {
-  width: 60px;             /* smaller size */
+  width: 60px;      
   height: auto;
   display: block;
   margin: 10px 0;
   position: relative;
-  animation: moveAcross 6s linear infinite; /* moves across screen */
+  animation: moveAcross 6s linear infinite;
 }
 
-/* animation: slide left to right */
 @keyframes moveAcross {
   0%   { transform: translateX(-100vw); }
   50%  { transform: translateX(0); }
   100% { transform: translateX(100vw); }
 }
 
-/* two-column layout */
 .page_wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -48,16 +41,12 @@ body {
   align-items: center;
   padding: 40px;
 }
-
-/* left title */
 .left_title h1 {
   margin: 0;
   font-size: 56px;
   line-height: 1;
   text-align: left;
 }
-
-/* fact box */
 .fact_box {
   justify-self: end;
   width: 80%;
@@ -78,7 +67,6 @@ body {
   font-size: 18px;
 }
 
-/* mobile stacking */
 @media (max-width: 800px){
   .page_wrap {
     grid-template-columns: 1fr;
