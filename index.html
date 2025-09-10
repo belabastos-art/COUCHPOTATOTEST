@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Potato</title>
+<style>
+  :root {
+    --yellow: #ffde00;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--white);
+    color: #222;
+    text-align: center;
+  }
+
+  /* Announcement strip */
+  .announce {
+    background: var(--yellow);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Nav */
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    color: var(--yellow);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 4rem 1rem;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--yellow) 0 20px,
+      var(--white) 20px 40px
+    );
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    color: var(--yellow);
+    margin: 0 0 1rem;
+  }
+  .hero .btn {
+    display: inline-block;
+    background: var(--yellow);
+    color: black;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Spiral section */
+  .spiral {
+    position: relative;
+    min-height: 80vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .spiral::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg,
+      var(--yellow) 0 20deg,
+      var(--white) 20deg 40deg
+    );
+    animation: spin 40s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .potato {
+    position: relative;
+    z-index: 1;
+    width: 180px;
+    height: 150px;
+    background: var(--yellow);
+    border-radius: 50% 50% 40% 40%;
+    transform: rotate(-10deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+  }
+  .potato span {
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+</style>
+</head>
+<body>
+  <div class="announce">
+    Feeling like a couch potato? We offer a deep breath, a fun fact, and a light quote.
+  </div>
+
+  <nav>
+    <div>POTATOES</div>
+    <div>SELF</div>
+    <div>CULTURE</div>
+  </nav>
+
+  <section class="hero">
+    <h1>COUCH POTATO</h1>
+    <a href="#spiral" class="btn">START</a>
+  </section>
+
+  <section class="spiral" id="spiral">
+    <div class="potato"><span>I embrace transformation</span></div>
+  </section>
+</body>
+</html>
