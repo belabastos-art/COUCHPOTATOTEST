@@ -1,97 +1,96 @@
-/* Basic beginner CSS for Couch Potato Facts */
+/* Basic beginner CSS — hearts move, page stays still */
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
 
-    /* use fundo.png as a repeating background */
-    background-image: url('fundo.png');
-    background-repeat: repeat;
-    background-size: 250px; /* adjust size of hearts */
-    animation: spinHearts 20s linear infinite;
+/* HEARTS BACKGROUND LAYER
+   - covers the whole screen
+   - sits behind content
+   - only THIS layer animates
+*/
+.bg-hearts{
+  position: fixed;
+  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  z-index: -1;              /* behind everything */
+  background-image: url('fundo.png');  /* your hearts tile */
+  background-repeat: repeat;
+  background-size: 250px;   /* change to resize hearts */
+  animation: heartsDrift 30s linear infinite;
+  opacity: 1;               /* set < 1 if you want lighter */
+}
+
+/* drift the hearts diagonally (no page flipping) */
+@keyframes heartsDrift{
+  from { background-position: 0 0; }
+  to   { background-position: 200px 200px; }
 }
 
 /* yellow highlight text */
-.yellow {
-    color: #ffde00;
+.yellow { color: #ffde00; }
+
+/* announcement bar */
+.announce_bar{
+  background-color: #ffde00;
+  text-align: center;
+  padding: 10px;
+}
+.announce_bar p{
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-/* top announcement bar */
-.announce_bar {
-    background-color: #ffde00;
-    text-align: center;
-    padding: 10px;
-}
-.announce_bar p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* main layout: two columns */
-.page_wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    min-height: calc(100vh - 44px);
-    align-items: center;
-    padding: 40px;
+/* two columns */
+.page_wrap{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  min-height: calc(100vh - 44px);
+  align-items: center;
+  padding: 40px;
 }
 
 /* left title */
-.left_title h1 {
-    margin: 0;
-    font-size: 56px;
-    line-height: 1;
-    text-align: left;
+.left_title h1{
+  margin: 0;
+  font-size: 56px;
+  line-height: 1;
+  text-align: left;
 }
 
-/* fact box on right */
-.fact_box {
-    justify-self: end;
-    width: 80%;
-    max-width: 520px;
+/* right fact box */
+.fact_box{
+  justify-self: end;
+  width: 80%;
+  max-width: 520px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+}
+.fact_box h2{ margin: 0 0 10px; font-size: 22px; }
+.fact_box p{ margin: 0; font-size: 18px; }
 
-    border: 2px solid #000000;
-    border-radius: 8px;
-    background-color: #ffffff;
-
+/* mobile stack */
+@media (max-width: 800px){
+  .page_wrap{
+    grid-template-columns: 1fr;
+    gap: 16px;
     padding: 20px;
+  }
+  .left_title h1{
+    font-size: 40px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.fact_box h2 {
-    margin: 0 0 10px 0;
-    font-size: 22px;
-}
-.fact_box p {
-    margin: 0;
-    font-size: 18px;
-}
-
-/* spin animation for background hearts */
-@keyframes spinHearts {
-    0% { background-position: 0 0; transform: rotate(0deg); }
-    100% { background-position: 0 0; transform: rotate(360deg); }
-}
-
-/* responsive mobile adjustments */
-@media (max-width: 800px) {
-    .page_wrap {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 20px;
-    }
-    .left_title h1 {
-        font-size: 40px;
-        text-align: center;
-    }
-    .fact_box {
-        justify-self: center;
-        width: 100%;
-        max-width: 520px;
-    }
+  }
+  .fact_box{
+    justify-self: center;
+    width: 100%;
+  }
 }
