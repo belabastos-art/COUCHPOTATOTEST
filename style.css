@@ -1,4 +1,4 @@
-/* Basic beginner CSS — hearts move, page stays still */
+/* Basic beginner CSS for Couch Potato Facts */
 
 body {
   margin: 0;
@@ -8,63 +8,57 @@ body {
   color: #000000;
 }
 
-/* HEARTS BACKGROUND LAYER
-   - covers the whole screen
-   - sits behind content
-   - only THIS layer animates
-*/
-.bg-hearts{
-  position: fixed;
-  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
-  z-index: -1;              /* behind everything */
-  background-image: url('heart.png');  /* your hearts tile */
-  background-repeat: repeat;
-  background-size: 250px;   /* change to resize hearts */
-  animation: heartsDrift 30s linear infinite;
-  opacity: 1;               /* set < 1 if you want lighter */
-}
-
-/* drift the hearts diagonally (no page flipping) */
-@keyframes heartsDrift{
-  from { background-position: 0 0; }
-  to   { background-position: 200px 200px; }
-}
-
-/* yellow highlight text */
 .yellow { color: #ffde00; }
 
-/* announcement bar */
-.announce_bar{
+/* header bar */
+.announce_bar {
   background-color: #ffde00;
   text-align: center;
   padding: 10px;
 }
-.announce_bar p{
+.announce_bar p {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
 }
 
-/* two columns */
-.page_wrap{
+/* heart image below header */
+.heart_img {
+  width: 60px;             /* smaller size */
+  height: auto;
+  display: block;
+  margin: 10px 0;
+  position: relative;
+  animation: moveAcross 6s linear infinite; /* moves across screen */
+}
+
+/* animation: slide left to right */
+@keyframes moveAcross {
+  0%   { transform: translateX(-100vw); }
+  50%  { transform: translateX(0); }
+  100% { transform: translateX(100vw); }
+}
+
+/* two-column layout */
+.page_wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  min-height: calc(100vh - 44px);
+  min-height: calc(100vh - 120px);
   align-items: center;
   padding: 40px;
 }
 
 /* left title */
-.left_title h1{
+.left_title h1 {
   margin: 0;
   font-size: 56px;
   line-height: 1;
   text-align: left;
 }
 
-/* right fact box */
-.fact_box{
+/* fact box */
+.fact_box {
   justify-self: end;
   width: 80%;
   max-width: 520px;
@@ -73,23 +67,29 @@ body {
   background: #fff;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
-.fact_box h2{ margin: 0 0 10px; font-size: 22px; }
-.fact_box p{ margin: 0; font-size: 18px; }
+.fact_box h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+.fact_box p {
+  margin: 0;
+  font-size: 18px;
+}
 
-/* mobile stack */
+/* mobile stacking */
 @media (max-width: 800px){
-  .page_wrap{
+  .page_wrap {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 20px;
   }
-  .left_title h1{
+  .left_title h1 {
     font-size: 40px;
     text-align: center;
   }
-  .fact_box{
+  .fact_box {
     justify-self: center;
     width: 100%;
   }
